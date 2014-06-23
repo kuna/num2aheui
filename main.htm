@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<script src="./num2aheui.js"></script>
+		<script src="./string2aheui.js"></script>
+		<script>
+		// initalization
+		n2a = new num2aheui();
+		s2a = new string2aheui();
+
+		function test() {
+			console.log(n2a.getLog(53580).getLog());
+			console.log(n2a.getLog(53580).getAheuiLog());
+			console.log(n2a.makeDiffNum(53580, 49828).getAheuiLog());
+
+			console.log(s2a.processString(n2a, "테스트다요") + "하");
+		}
+
+		function run1() {
+			document.forms[0].aheui.value = n2a.getLog( parseInt(document.forms[0].num2aheui.value) ).getAheuiLog();
+		}
+
+		function run2() {
+			str = s2a.processString(n2a, document.forms[0].string2aheui.value) + "하";
+			document.forms[0].aheui.value = str
+			str = "@aheui " + str;
+			document.getElementById("twturl").innerHTML = '<a href="https://twitter.com/share?text=' + str + '" class="twitter-share-button" data-lang="en" target="_blank">Tweet</a>';
+		}
+		</script>
+	</head>
+	<body>
+		<h2>num2aheui / string2aheui</h2>
+		<hr>
+		<h3>개요</h3>
+		<div>아희는 난해한 프로그래밍 언어 중 하나로서, 자세한 사항은 <a href="http://aheui.github.io/specification.ko/">여기</a>를 참조 바랍니다. num2aheui가 제공하는 기능은, 2~9를 이용하여 수를 만들기가 버거운 아희 개발자들을 위하여 숫자를 입력하면 해당 숫자를 스택에 만들어주는 아희 코드를 만들어주는 것입니다. string2aheui가 제공하는 기능은, 문자열을 입력하면 스택을 이용하여 해당 문자열을 print 해 주는 코드를 만들어주는 것입니다. 비록 프로그래밍 로직을 짜는 데 있어서 아무런 도움이 되지 않지만, 아희 개발자들에게 조금이나마 이 기능들이 도움이 되었으면 합니다.</div>
+		<h3>직접 사용해보기</h3>
+		<form action="">
+			<h4>num2aheui</h4>
+			<input type="text" name="num2aheui">
+			<input type="button" value="num2aheui" onclick="run1();">
+			<h4>string2aheui</h4>
+			<textarea name="string2aheui" rows="3" cols="80" style="scrollbar:both;"></textarea>
+			<input type="button" value="string2aheui" onclick="run2();">
+			<h4>result</h4>
+			<textarea name="aheui" rows="20" cols="80" style="scrollbar:both;"></textarea>
+		</form>
+		
+		<div>결과가 의심되신다구요? <a href="http://puzzlet.org/doc/aheui/jsaheui_ko.html">여기</a>에서 직접 테스트를 해 보실 수 있습니다. 아니면 아희 봇에게 직접 말을 시켜 보셔도 좋고요! <span id="twturl"><a href="https://twitter.com/share?text=http://kgdgwn98.snucse.org/num2aheui" class="twitter-share-button" data-lang="en" target="_blank">Tweet</a></span>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+
+		<h3><a href="https://github.com/kuna/num2aheui">Github</a></h3>
+		<div>python, js 코드를 제공하고 있습니다.</div>
+	</body>
+</html>
